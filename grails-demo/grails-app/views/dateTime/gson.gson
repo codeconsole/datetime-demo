@@ -1,0 +1,30 @@
+import grails.demo.DateTime
+import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.OffsetDateTime
+import java.time.ZonedDateTime
+
+model {
+    String platform
+    Instant instant
+    Date date
+    Calendar calendar
+    LocalDate localDate
+    LocalDateTime localDateTime
+    OffsetDateTime offsetDateTime
+    ZonedDateTime zonedDateTime
+    DateTime dateTime
+}
+
+json {
+    platform platform + " (gson)"
+    instant instant
+    date date
+    calendar calendar
+    localDate localDate
+    localDateTime localDateTime
+    offsetDateTime offsetDateTime
+    zonedDateTime zonedDateTime
+    dateTime dateTime
+}

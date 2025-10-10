@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 # Default values
 GRAILS_VERSION="7.0.0-RC2"
@@ -50,9 +49,13 @@ fi
 if [ "$DEMO_TYPE" == "spring3" ] || [ "$DEMO_TYPE" == "spring4" ]; then
     echo "Running Spring Boot $SPRING_BOOT_VERSION on port $PORT with build directory build-$SPRING_BOOT_VERSION"
     cd spring-demo
-    ./gradlew bootRun --project-prop buildDir=build-$SPRING_BOOT_VERSION -PspringBootVersion=$SPRING_BOOT_VERSION --args="--server.port=$PORT"
+    CMD="./gradlew bootRun --project-prop buildDir=build-$SPRING_BOOT_VERSION -PspringBootVersion=$SPRING_BOOT_VERSION --args=\"--server.port=$PORT\""
+    echo "$CMD"
+    eval $CMD
 else
     echo "Running Grails $GRAILS_VERSION on port $PORT with build directory build-$GRAILS_VERSION"
     cd grails-demo
-    ./gradlew bootRun --project-prop buildDir=build-$GRAILS_VERSION -PgrailsVersion=$GRAILS_VERSION --args="--server.port=$PORT"
+    CMD="./gradlew bootRun --project-prop buildDir=build-$GRAILS_VERSION -PgrailsVersion=$GRAILS_VERSION --args=\"--server.port=$PORT\""
+    echo "$CMD"
+    eval $CMD
 fi

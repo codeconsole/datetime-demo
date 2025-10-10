@@ -9,9 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 public record DateTime(
-    Instant instant,
-    Date date,
     Calendar calendar,
+    Date date,
+    Instant instant,
     LocalDate localDate,
     LocalDateTime localDateTime,
     OffsetDateTime offsetDateTime,

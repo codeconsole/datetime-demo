@@ -37,22 +37,25 @@ class DateTimeController {
         def offsetDateTime = instant.atOffset(zone.rules.getOffset(instant))
         def zonedDateTime = instant.atZone(zone)
 
-        m.instant = instant
-        m.date = date
-
         if (safeForDefaultJson) {
             m.calendar = testSerialization(calendar)
-            m.zonedDateTime = testSerialization(zonedDateTime)
         } else {
             m.calendar = calendar
-            m.zonedDateTime = zonedDateTime
         }
 
+        m.date = date
+        m.instant = instant
         m.localDate = localDate
         m.localDateTime = localDateTime
         m.offsetDateTime = offsetDateTime
 
-        def dateTime = new DateTime(instant, date, calendar, localDate, localDateTime, offsetDateTime, zonedDateTime)
+        if (safeForDefaultJson) {
+            m.zonedDateTime = testSerialization(zonedDateTime)
+        } else {
+            m.zonedDateTime = zonedDateTime
+        }
+
+        def dateTime = new DateTime(calendar, date, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
         m.dateTime = dateTime
 
         return m

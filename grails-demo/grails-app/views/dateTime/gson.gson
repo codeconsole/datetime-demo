@@ -7,9 +7,9 @@ import java.time.ZonedDateTime
 
 model {
     String platform
-    Instant instant
-    Date date
     Calendar calendar
+    Date date
+    Instant instant
     LocalDate localDate
     LocalDateTime localDateTime
     OffsetDateTime offsetDateTime
@@ -19,9 +19,9 @@ model {
 
 json {
     platform platform + " (gson)"
-    instant instant
-    date date
     calendar calendar
+    date date
+    instant instant
     localDate localDate
     localDateTime localDateTime
     offsetDateTime offsetDateTime

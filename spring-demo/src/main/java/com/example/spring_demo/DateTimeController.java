@@ -33,15 +33,15 @@ public class DateTimeController {
         ZonedDateTime zonedDateTime = instant.atZone(zone);
 
         m.put("platform", "Spring Boot " + SpringBootVersion.getVersion());
-        m.put("instant", instant);
-        m.put("date", date);
         m.put("calendar", calendar);
+        m.put("date", date);
+        m.put("instant", instant);
         m.put("localDate", localDate);
         m.put("localDateTime", localDateTime);
         m.put("offsetDateTime", offsetDateTime);
         m.put("zonedDateTime", zonedDateTime);
 
-        DateTime dateTime = new DateTime(instant, date, calendar, localDate, localDateTime, offsetDateTime, zonedDateTime);
+        DateTime dateTime = new DateTime(calendar, date, instant, localDate, localDateTime, offsetDateTime, zonedDateTime);
         m.put("dateTime", dateTime);
 
         return m;

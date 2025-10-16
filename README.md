@@ -9,9 +9,14 @@ Demonstrates how various Date formats render in Grails and Spring Boot
 ./run.sh spring4  # Starts Spring Boot 4.0.0-M2 on port 8084
 ```
 
-http://localhost:8081/ and http://localhost:8081/gson
+http://localhost:8081/dateTime
+http://localhost:8082/dateTime
 
-http://localhost:8082/ and http://localhost:8082/gson
+http://localhost:8081/dateTime/show.json
+http://localhost:8081/dateTime/show.gson
+
+http://localhost:8082/dateTime/show.json
+http://localhost:8082/dateTime/show.gson
 
 http://localhost:8083/
 

@@ -8,17 +8,22 @@ import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZonedDateTime
 import java.time.ZoneId
+import grails.plugin.scaffolding.annotation.Scaffold
 
+@Scaffold(domain = DateTime)
 class DateTimeController {
 
-    static responseFormats = ['json']
-
-    def index() {
-        respond buildDateTimeMap(true)
+    def show() {
+        println request.format
+        if (request.format == 'gson') {
+            respond buildDateTimeMap(false), view: 'gson'
+        } else {
+            respond buildDateTimeMap(true)
+        }
     }
 
-    def gson() {
-        respond buildDateTimeMap(false)
+    def edit() {
+        respond buildDateTimeMap(true)
     }
 
     private Map buildDateTimeMap(boolean safeForDefaultJson) {
@@ -54,8 +59,8 @@ class DateTimeController {
         } else {
             m.zonedDateTime = zonedDateTime
         }
-
-        def dateTime = new DateTime(calendar, date, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
+        def dateTime = new DateTime(calendar, date, instant, localDateTime, offsetDateTime, zonedDateTime)
+        //def dateTime = new DateTime(calendar, date, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
         m.dateTime = dateTime
 
         return m

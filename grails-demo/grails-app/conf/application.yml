@@ -80,6 +80,7 @@ grails:
             xml:
               - text/xml
               - application/xml
+            gson: application/json
     urlmapping:
         cache:
             maxsize: 1000

@@ -9,8 +9,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "dateTime", action: "index")
-        "/gson"(controller: "dateTime", action: "gson")
+        "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

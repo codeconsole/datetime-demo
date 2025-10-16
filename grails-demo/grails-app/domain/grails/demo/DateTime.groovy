@@ -6,6 +6,9 @@ import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.ZonedDateTime
 
+import groovy.transform.TupleConstructor
+
+@TupleConstructor   
 class DateTime {
     Calendar calendar
     Date date
@@ -14,15 +17,4 @@ class DateTime {
     LocalDateTime localDateTime
     OffsetDateTime offsetDateTime
     ZonedDateTime zonedDateTime
-
-    DateTime(Calendar calendar, Date date, Instant instant, LocalDate localDate, LocalDateTime localDateTime,
-             OffsetDateTime offsetDateTime, ZonedDateTime zonedDateTime) {
-        this.calendar = calendar
-        this.date = date
-        this.instant = instant
-        this.localDate = localDate
-        this.localDateTime = localDateTime
-        this.offsetDateTime = offsetDateTime
-        this.zonedDateTime = zonedDateTime
-    }
 }

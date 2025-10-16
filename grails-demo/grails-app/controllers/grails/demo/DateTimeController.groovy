@@ -5,25 +5,25 @@ import grails.util.Metadata
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.time.OffsetDateTime
 import java.time.ZonedDateTime
 import java.time.ZoneId
 import grails.plugin.scaffolding.annotation.Scaffold
+import grails.util.Environment
 
 @Scaffold(domain = DateTime)
 class DateTimeController {
 
-    def show() {
-        println request.format
+    def show(DateTime dateTime ) {
+        dateTime = dateTime ?: buildDateTimeMap(request.format == 'gson')
         if (request.format == 'gson') {
-            respond buildDateTimeMap(false), view: 'gson'
+            respond dateTime, view: 'gson'
         } else {
-            respond buildDateTimeMap(true)
+            respond dateTime
         }
     }
 
-    def edit() {
-        respond buildDateTimeMap(true)
+    def edit(DateTime dateTime) {
+        respond dateTime ?: buildDateTimeMap(true)
     }
 
     private Map buildDateTimeMap(boolean safeForDefaultJson) {
@@ -59,8 +59,8 @@ class DateTimeController {
         } else {
             m.zonedDateTime = zonedDateTime
         }
-        def dateTime = new DateTime(calendar, date, instant, localDateTime, offsetDateTime, zonedDateTime)
-        //def dateTime = new DateTime(calendar, date, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
+//        def dateTime = new DateTime(calendar, date, instant, localDateTime, offsetDateTime, zonedDateTime)
+        def dateTime = new DateTime(calendar, date, instant, Environment.grailsVersion == '7.0.0-SNAPSHOT'? localDate : null, localDateTime, offsetDateTime, zonedDateTime)
         m.dateTime = dateTime
 
         return m

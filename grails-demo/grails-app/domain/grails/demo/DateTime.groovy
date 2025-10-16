@@ -13,8 +13,15 @@ class DateTime {
     Calendar calendar
     Date date
     Instant instant
-    // LocalDate localDate    // causes exception
+    LocalDate localDate    // causes exception on 7.0.0 and RC2
     LocalDateTime localDateTime
     OffsetDateTime offsetDateTime
     ZonedDateTime zonedDateTime
+
+    static constraints = {
+        calendar()
+        instant nullable: true
+        offsetDateTime nullable: true
+        zonedDateTime nullable: true
+    }
 }

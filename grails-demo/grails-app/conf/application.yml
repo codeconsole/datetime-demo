@@ -1,5 +1,10 @@
 ---
+
 grails:
+    tags:
+        datePicker:
+            default:
+                # precision: second
     profile: web
     codegen:
         defaultPackage: grails.demo

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default values
-GRAILS_VERSION="7.0.0-RC2"
+GRAILS_VERSION="7.0.0"
 SPRING_BOOT_VERSION=""
 DEMO_TYPE="grails"  # grails, grails-snapshot, spring3, or spring4
 CUSTOM_PORT=""
@@ -22,7 +22,7 @@ done
 # Set version and default port based on demo type
 case $DEMO_TYPE in
     grails-snapshot)
-        GRAILS_VERSION="7.0.0-SNAPSHOT"
+        GRAILS_VERSION="7.0.1-SNAPSHOT"
         PORT="8082"
         ;;
     spring3)
@@ -34,8 +34,8 @@ case $DEMO_TYPE in
         PORT="8084"
         ;;
     *)
-        # Default: Grails 7.0.0-RC2
-        GRAILS_VERSION="7.0.0-RC2"
+        # Default: Grails 7.0.0
+        GRAILS_VERSION="7.0.0"
         PORT="8081"
         ;;
 esac

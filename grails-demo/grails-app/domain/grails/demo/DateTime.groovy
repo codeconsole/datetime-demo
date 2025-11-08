@@ -12,14 +12,21 @@ import java.sql.Timestamp
 
 import groovy.transform.TupleConstructor
 
-@TupleConstructor   
+enum DateTimeType {
+    LEGACY,
+    JAVA8,
+    SQL
+}
+
+@TupleConstructor
 class DateTime {
+    DateTimeType type
     Calendar calendar
     Date date
     SqlDate sqlDate
     Time time
     LocalTime localTime
-    Timestamp timestamp 
+    Timestamp timestamp
     Instant instant
     LocalDate localDate    // causes exception on 7.0.0 and RC2
     LocalDateTime localDateTime
@@ -27,9 +34,10 @@ class DateTime {
     ZonedDateTime zonedDateTime
 
     static constraints = {
+        type nullable: true
         calendar()
-       instant nullable: true
-       offsetDateTime nullable: true
-       zonedDateTime nullable: true
+        instant nullable: true
+        offsetDateTime nullable: true
+        zonedDateTime nullable: true
     }
 }

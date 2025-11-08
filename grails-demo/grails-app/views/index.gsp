@@ -66,6 +66,10 @@
                 this application, click on each to execute its default action:
             </p>
 
+            <p>
+                <a href="/dateTime/show.json" target="_blank">json</a> <a href="/dateTime/show.gson" target="_blank">gson</a>
+            <p>
+
             <div id="controllers" role="navigation">
                 <h2>Available Controllers:</h2>
                 <ul>

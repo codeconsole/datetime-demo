@@ -17,12 +17,12 @@ import grails.util.Environment
 @Scaffold(domain = DateTime)
 class DateTimeController {
 
-    def show(DateTime dateTime ) {
-        dateTime = dateTime ?: buildDateTimeMap(request.format == 'gson')
+    def show(DateTime dateTime) {
+        def resp = dateTime ?: buildDateTimeMap(request.format == 'gson')
         if (request.format == 'gson') {
-            respond dateTime, view: 'gson'
+            respond resp, view: 'gson'
         } else {
-            respond dateTime
+            respond resp
         }
     }
 
@@ -71,7 +71,7 @@ class DateTimeController {
         } else {
             m.zonedDateTime = zonedDateTime
         }
-        def dateTime = new DateTime(calendar, date, sqlDate, time, localTime, timestamp, instant, Environment.grailsVersion == '7.0.1-SNAPSHOT'? localDate : null, localDateTime, offsetDateTime, zonedDateTime)
+        def dateTime = new DateTime(DateTimeType.JAVA8, calendar, date, sqlDate, time, localTime, timestamp, instant, Environment.grailsVersion == '7.0.1-SNAPSHOT'? localDate : null, localDateTime, offsetDateTime, zonedDateTime)
 //        def dateTime = new DateTime(calendar, date, sqlDate, time, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
         m.dateTime = dateTime
 

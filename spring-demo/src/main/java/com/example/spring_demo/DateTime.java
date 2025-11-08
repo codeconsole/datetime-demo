@@ -11,7 +11,14 @@ import java.util.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
 
+enum DateTimeType {
+    LEGACY,
+    JAVA8,
+    SQL
+}
+
 public record DateTime(
+    DateTimeType type,
     Calendar calendar,
     Date date,
     java.sql.Date sqlDate,

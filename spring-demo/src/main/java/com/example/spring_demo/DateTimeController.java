@@ -52,7 +52,7 @@ public class DateTimeController {
         m.put("offsetDateTime", offsetDateTime);
         m.put("zonedDateTime", zonedDateTime);
 
-        DateTime dateTime = new DateTime(calendar, date, sqlDate, time, localTime, timestamp, instant, localDate, localDateTime, offsetDateTime, zonedDateTime);
+        DateTime dateTime = new DateTime(DateTimeType.JAVA8, calendar, date, sqlDate, time, localTime, timestamp, instant, localDate, localDateTime, offsetDateTime, zonedDateTime);
         m.put("dateTime", dateTime);
 
         return m;

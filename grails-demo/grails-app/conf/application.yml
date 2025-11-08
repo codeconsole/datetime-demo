@@ -93,6 +93,12 @@ grails:
         defaultScope: singleton
     converters:
         encoding: UTF-8
+        json:
+            enum:
+                format: simple
+        xml:
+            enum:
+                format: simple
     views:
         default:
             codec: html

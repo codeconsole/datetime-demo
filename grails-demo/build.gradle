@@ -1,6 +1,8 @@
 buildscript {
     repositories {
-        mavenLocal()
+        if (project.hasProperty('useMavenLocal') && project.property('useMavenLocal') == 'true') {
+            mavenLocal()
+        }
         mavenCentral()
         maven { url "https://repo.grails.org/grails/restricted" }
         maven {
@@ -30,7 +32,9 @@ apply plugin:"cloud.wondrify.asset-pipeline"
 apply plugin:"org.apache.grails.gradle.grails-gsp"
 
 repositories {
-    mavenLocal()
+    if (project.hasProperty('useMavenLocal') && project.property('useMavenLocal') == 'true') {
+        mavenLocal()
+    }
     mavenCentral()
     maven { url "https://repo.grails.org/grails/restricted" }
     maven {

@@ -15,6 +15,9 @@ java {
 }
 
 repositories {
+	if (project.hasProperty('useMavenLocal') && project.property('useMavenLocal') == 'true') {
+		mavenLocal()
+	}
 	mavenCentral()
 }
 

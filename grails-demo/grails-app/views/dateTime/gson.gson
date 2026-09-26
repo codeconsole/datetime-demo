@@ -1,19 +1,52 @@
 import grails.demo.DateTime
+import java.sql.Date as SqlDate
+import java.sql.Time
+import java.sql.Timestamp
+import java.time.DayOfWeek
+import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.LocalTime
+import java.time.Month
+import java.time.MonthDay
 import java.time.OffsetDateTime
+import java.time.OffsetTime
+import java.time.Period
+import java.time.Year
+import java.time.YearMonth
+import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.ZonedDateTime
+import javax.xml.datatype.XMLGregorianCalendar
 
 model {
     String platform
     Calendar calendar
     Date date
+    SqlDate sqlDate
+    Time time
+    LocalTime localTime
+    Timestamp timestamp
     Instant instant
     LocalDate localDate
     LocalDateTime localDateTime
     OffsetDateTime offsetDateTime
     ZonedDateTime zonedDateTime
+    OffsetTime offsetTime
+    Year year
+    YearMonth yearMonth
+    MonthDay monthDay
+    Month month
+    DayOfWeek dayOfWeek
+    Duration duration
+    Period period
+    ZoneId zoneId
+    ZoneOffset zoneOffset
+    TimeZone timeZone
+    XMLGregorianCalendar xmlGregorianCalendar
+    javax.xml.datatype.Duration xmlDuration
+    Map dateKeys
     DateTime dateTime
 }
 
@@ -21,10 +54,28 @@ json {
     platform platform + " (gson)"
     calendar calendar
     date date
+    sqlDate sqlDate
+    time time
+    localTime localTime
+    timestamp timestamp
     instant instant
     localDate localDate
     localDateTime localDateTime
     offsetDateTime offsetDateTime
     zonedDateTime zonedDateTime
-    dateTime dateTime
+    offsetTime offsetTime
+    year year
+    yearMonth yearMonth
+    monthDay monthDay
+    month month
+    dayOfWeek dayOfWeek
+    duration duration
+    period period
+    zoneId zoneId
+    zoneOffset zoneOffset
+    timeZone timeZone
+    xmlGregorianCalendar xmlGregorianCalendar
+    xmlDuration xmlDuration
+    dateKeys dateKeys
+    dateTime g.render(dateTime)
 }

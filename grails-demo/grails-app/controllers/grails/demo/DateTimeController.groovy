@@ -2,24 +2,29 @@ package grails.demo
 
 import grails.converters.JSON
 import grails.util.Metadata
+import java.time.Duration
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.MonthDay
+import java.time.Period
+import java.time.Year
+import java.time.YearMonth
 import java.time.ZonedDateTime
 import java.time.ZoneId
 import java.sql.Date as SqlDate
 import java.sql.Time
 import java.sql.Timestamp
+import javax.xml.datatype.DatatypeFactory
 import grails.plugin.scaffolding.annotation.Scaffold
-import grails.util.Environment
 
 @Scaffold(domain = DateTime)
 class DateTimeController {
 
     def show(DateTime dateTime) {
-        def resp = dateTime ?: buildDateTimeMap(request.format == 'gson')
-        if (request.format == 'gson') {
+        def resp = dateTime ?: buildDateTimeMap(params.format == 'gson')
+        if (params.format == 'gson') {
             respond resp, view: 'gson'
         } else {
             respond resp
@@ -71,7 +76,23 @@ class DateTimeController {
         } else {
             m.zonedDateTime = zonedDateTime
         }
-        def dateTime = new DateTime(DateTimeType.JAVA8, calendar, date, sqlDate, time, localTime, timestamp, instant, Environment.grailsVersion == '7.0.1-SNAPSHOT'? localDate : null, localDateTime, offsetDateTime, zonedDateTime)
+
+        m.offsetTime = offsetDateTime.toOffsetTime()
+        m.year = Year.from(localDate)
+        m.yearMonth = YearMonth.from(localDate)
+        m.monthDay = MonthDay.from(localDate)
+        m.month = localDate.month
+        m.dayOfWeek = localDate.dayOfWeek
+        m.duration = Duration.ofMinutes(90).plusMillis(250)
+        m.period = Period.of(1, 2, 3)
+        m.zoneId = zone
+        m.zoneOffset = offsetDateTime.offset
+        m.timeZone = TimeZone.getTimeZone(zone)
+        m.xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar)
+        m.xmlDuration = DatatypeFactory.newInstance().newDuration('P1DT2H')
+        m.dateKeys = [(date): 'date', (localDate): 'localDate', (zonedDateTime): 'zonedDateTime']
+
+        def dateTime = new DateTime(DateTimeType.JAVA8, calendar, date, sqlDate, time, localTime, timestamp, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
 //        def dateTime = new DateTime(calendar, date, sqlDate, time, instant, localDate, localDateTime, offsetDateTime, zonedDateTime)
         m.dateTime = dateTime
 

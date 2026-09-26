@@ -24,7 +24,7 @@ public record DateTime(
     java.sql.Date sqlDate,
     Time time,
     LocalTime localTime,
-    Timestamp Timestamp,
+    Timestamp timestamp,
     Instant instant,
     LocalDate localDate,
     LocalDateTime localDateTime,
